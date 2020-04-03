@@ -9,6 +9,9 @@ def index():
 # def results():
 #    return render_template('ResultPage.html')
 
+@app.route("/results")
+def results():
+   return "template results"
 
 
 if __name__ == "__main__":
