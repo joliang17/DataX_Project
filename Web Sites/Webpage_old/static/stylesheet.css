@@ -1,0 +1,61 @@
+body {
+  /*background-color: white;*/
+  /*background-image: url(wood.jpeg);*/
+  /*#FDEBD0;*/
+}
+
+/*.imagec{
+	display: block;
+	margin
+}*/
+h1 {
+  background-color: tan;
+  font-family: Verdana;
+  text-align: center;
+  text-decoration: underline overline;
+}
+
+h2 {
+  color: dimgray;
+  font-size: 20;
+  font-family: Helvetica;
+  border-bottom: 1px solid black;
+}
+
+ul.userinfo {
+  line-height: 1.8em;
+  background-image: url('fig/chalkboard.png');
+  background-size: 100% 600px;
+  background-position: left;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+form.userinfo_form {
+  margin-left: 55px;
+}
+
+button {
+  background-color: #555555;
+  border: 1px solid;
+  border-radius: 10px;
+  text-align: center;
+  margin-right: 10px;
+  box-sizing: border-box;
+  list-style-type: none;
+  font-size: 20px;
+  color: white;
+}
+
+table, th, td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}
+
+th, td {
+  height: 50px;
+}
