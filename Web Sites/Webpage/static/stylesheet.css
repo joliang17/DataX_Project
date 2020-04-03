@@ -24,7 +24,7 @@ h2 {
 
 ul.userinfo {
   line-height: 1.8em;
-  background-image: url('fig/chalkboard.png');
+  background-image: url(/static/chalkboard.png);
   background-size: 100% 600px;
   background-position: left;
   background-repeat: no-repeat;
