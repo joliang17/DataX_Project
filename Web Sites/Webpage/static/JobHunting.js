@@ -35,13 +35,30 @@ $(document).ready(function(){
     });
 });
 
-console.log(checked_skill)
-
 function GetResults(){
     $.ajax({
         type:"get",
         url: "http://localhost:5000/results", 
         success: function(result){
-            console.log(result)
+            temp = result.replace(/\[/g,'').replace(/\]/g,'').split(",");
+            
+            var data = [];
+            while(temp.length) 
+            data.push(temp.splice(0,3));
+
+            AddResulttoTable(data)
       }});
-}
+};
+
+function AddResulttoTable(data){
+    var tableData = ""
+    for(var i=0; i<data.length; i++){
+        
+        tableData += "<tr>"
+        for(var j=0; j<data[i].length; j++){
+            tableData+="<td>"+data[i][j]+"</td>"
+        }
+        tableData += "</tr>"
+    }
+    $("#Recommendation").append(tableData)
+  };

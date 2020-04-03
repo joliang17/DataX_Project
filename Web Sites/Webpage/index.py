@@ -11,7 +11,8 @@ def index():
 
 @app.route("/results")
 def results():
-   return "template results"
+   data=[[1,2,3],[4,5,6]]
+   return str(data)
 
 
 if __name__ == "__main__":
