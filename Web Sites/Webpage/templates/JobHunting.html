@@ -4,7 +4,8 @@
 
 	<title>Job Hunting Strategy - Career Development Recommendation</title>
 	<link rel="stylesheet" href="{{ url_for('static',    filename='stylesheet.css') }}">
-
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type = "text/javascript" src = "../static/JobHunting.js"></script>
 </head>
 
 <body>
@@ -27,17 +28,17 @@
 			<li>
 				<label for="work_experience"> Have your worked before? </br></label>
 				Yes:
-				<input type="radio" id="work_experience_positive" name="yesorno" value="">
+				<input type="radio" id="work_experience_positive" name="yesorno" value="yes">
 				No:
-				<input type="radio" id="work_experience_negative" name="yesorno" value="">
+				<input type="radio" id="work_experience_negative" name="yesorno" value="no">
 			</li>
 			<li>
 				<label for="year_experience"> Year of Work Experience </br></label>
 				<input type="number" id="work_experience_year" min="0" max="50" size="30"><br>
 			</li>
 			<li>
-				<label for="mojor"> What's your major for your most recent degree? </br></label>
-				<select>
+				<label for="major"> What's your major for your most recent degree? </br></label>
+				<select id="MajorSelection">
 					<option value="Industrial Engineering">Industrial Engineering</option>
 					<option value="Data Science">Data Science</option>
 					<option value="Computer Science">Computer Science</option>
@@ -45,20 +46,23 @@
 			</li>
 			<li>
 				<label for="mojor"> Which skill do you poccess? </br></label>
-				<input type="checkbox" id="skill_python" name=""> Python <br>
-				<input type="checkbox" id="skill_r" name=""> R <br>
-				<input type="checkbox" id="skill_html" name=""> HTML <br>
-				<input type="checkbox" id="skill_css" name=""> CSS <br>
+				<input type="checkbox" id="skill_python" name="SkillCheckBox" value="Python"> Python <br>
+				<input type="checkbox" id="skill_r" name="SkillCheckBox" value="R"> R <br>
+				<input type="checkbox" id="skill_html" name="SkillCheckBox" value="HTML"> HTML <br>
+				<input type="checkbox" id="skill_css" name="SkillCheckBox" value="CSS"> CSS <br>
 				Other:<br><input type="text" id="skill_other" name="" size="30"><br><br>
 			</li>
 			<input type="submit" value="Start Hunting">
+			
+			<!-- <button type="submit" value="Submit">Submit</button> -->
+			<button type="reset" value="Reset">Reset</button>
 		</form>
 		<br></br>
 	</ul>
 
 	<ul class="button">
 		</br>
-		<button type="button">Check to see the results!</button>
+		<button id="CheckResult" type="button">Check to see the results!</button>
 		<!--<li><a class="button" href="">Check to see the results!</a></li>-->
 	</ul>
 
