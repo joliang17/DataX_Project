@@ -41,7 +41,7 @@ function GetResults(){
         url: "http://localhost:5000/results", 
         success: function(result){
             temp = result.replace(/\[/g,'').replace(/\]/g,'').split(",");
-            
+
             var data = [];
             while(temp.length) 
             data.push(temp.splice(0,3));
