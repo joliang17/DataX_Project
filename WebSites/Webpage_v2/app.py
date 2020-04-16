@@ -1,5 +1,5 @@
 from flask import Flask,render_template,request
-
+from werkzeug.datastructures import ImmutableMultiDict
 # csv = readCSV('./...csv')
 # csvData
 
@@ -19,12 +19,23 @@ def profile(username):
 
 @app.route('/submitForm', methods=['POST'])
 def handleReq():
-	name = request.form['name']
-	age = request.form['age']
-	hasWorked = request.form['hasWorked']
-	yrOfExp = request.form['yrOfExp']
-	# skillSets = request.form.getlist("skillSets")
-	print(request.form)
+	# name = request.form['name']
+	# age = request.form['age']
+	# hasWorked = request.form['hasWorked']
+	# yrOfExp = request.form['yrOfExp']
+	# # skillSets = request.form.getlist("skillSets")
+	# print(request.form)
+	# print(name, age)
+
+	imudict = request.form
+	dict0 = imudict.to_dict(flat=False)
+
+	name = dict0['name'][0]
+	age = dict0['age'][0]
+	hasWorked = dict0['hasWorked'][0]
+	yrOfExp = dict0['yrOfExp'][0]
+	skillSets = dict0['skillSets'] # List type
+
 	print(name, age)
 
 	## To-do:
