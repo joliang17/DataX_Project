@@ -30,11 +30,11 @@ def handleReq():
 
 	# Read book directory csv and display it if user lack reletive skills
 	book_list = list()
-	if 'Python' not in skillSets:
+	if 'Python' in skillSets:
 		filename = 'Book_Directory_Python.csv'
 		data_book_Python = pd.read_csv(filename, header=0)
 		book_list += list(data_book_Python.values)
-	if 'R' not in skillSets:
+	if 'R' in skillSets:
 		filename = 'Book_Directory_R.csv'
 		data_book_R = pd.read_csv(filename, header=0)
 		book_list += list(data_book_R.values)
