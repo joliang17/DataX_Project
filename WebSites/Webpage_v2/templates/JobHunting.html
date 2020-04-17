@@ -24,80 +24,79 @@
 
 <body>
 
-	<div class="main">
+<div class = "main">
 
-		<img src="../static/Goodjob.png" alt="Image" height="60" width="60">
-		<h1> Welcome to the Job Hunting Strategy! </h1>
-
-
-		<h2> Please let us know more about you before we give you recommendations!</h2>
-		<ul class="userinfo">
-			</br>
-
-			<form action="submitForm" method="POST">
-				<li>
-					<label for="name"> What is your name? </br></label>
-					<input type="text" value="" id="name" name="name" size="30">
-					<!--<input type = "submit" value = "click" onclick="passvalues()"/> -->
-				</li>
-
-				<li>
-					<label for="age"> What is your age? </br></label>
-					<input type="text" value="" id="age" name="age" size="30">
-				</li>
-
-				<li>
-					<select>
-						<option value="Associate" name="degree">Associate's</option>
-						<option value="Bachelor" name="degree">Bachelor's</option>
-						<option value="Master" name="degree">Master's</option>
-						<option value="Doctoral" name="degree">Doctorate</option>
-					</select>
-				</li>
-
-				<li> What's your major for your most recent degree?
-					<select>
-						<option value="Industrial Engineering">Industrial Engineering</option>
-						<option value="Data Science">Data Science</option>
-						<option value="Computer Science">Computer Science</option>
-					</select>
-				</li>
-
-				<li> Have your worked before?</br>
-					Yes:
-					<input type="radio" name="hasWorked" value=true></br>
-					No:
-					<input type="radio" name="hasWorked" value=false>
-
-				<li> Year of Experience
-					<input type="number" name="yrOfExp" min="0" max="50" size="30">
-				</li>
+<img src="../static/Goodjob.png" alt="Image" height="60" width="60">
+<h1>  Welcome to the Job Hunting Strategy! </h1>
 
 
-				<li>
-					Which follwing skills do you want to learn? <br>
-					<input type="checkbox" name="skillSets" value="Python"> Python <br>
-					<input type="checkbox" name="skillSets" value="R"> R <br>
-					<input type="checkbox" name="skillSets" value="HTML"> HTML <br>
-					<input type="checkbox" name="skillSets" value="CSS"> CSS <br>
-					Other:<br>
-					<textarea rows="3" cols="40"></textarea><br></br>
-				</li>
+<h2> Please let us know more about you before we give you recommendations!</h2>
+	<ul class="userinfo">
+	<br>
+	
+	<form action="submitForm" method="POST">
+		<li> 
+		<label for="name"> What is your name? <br></label>
+		<input type = "text" value = "" id= "name" name="name" size="30">
+		<!--<input type = "submit" value = "click" onclick="passvalues()"/> -->
+		</li>
 
-				</br>
-				<input type="submit" value='Check to see the results!'>
-			</form>
+		<li> 
+		<label for="age"> What is your age? <br></label>
+		<input type = "text" value = "" id= "age" name="age" size="30" >
+		</li>
 
-			<ul class="button">
+		<li> 
+		<select>
+		<option value="Associate" name="degree">Associate's</option>
+		<option value="Bachelor" name="degree">Bachelor's</option>
+		<option value="Master" name="degree">Master's</option>
+		<option value="Doctoral" name="degree">Doctorate</option>
+		</select>
+		</li>
 
+		<li> What's your major for your most recent degree?
+		<select>
+		<option value="Industrial Engineering">Industrial Engineering</option>
+		<option value="Data Science">Data Science</option>
+		<option value="Computer Science">Computer Science</option>
+		</select>
+		</li>
 
-				<!--<li><a class="button" href="">Check to see the results!</a></li>-->
-			</ul>
-		</ul>
+		<li> Have your worked before?
+		Yes:
+		<input type="radio" name="hasWorked" value="true"><br>
+		No:
+		<input type="radio" name="hasWorked" value="false">
+		</li>
+		
+		<li> Year of Experience
+		<input type = "number" name="yrOfExp" min="0" max="50" size="30">
+		</li>
+		
 
+		<li> Skill Sets
+		Which laungages below do you use? <br>
+		<input type = "checkbox" name="skillSets" value="Python"> Python <br>
+		<input type = "checkbox" name="skillSets" value="R"> R <br>
+		<input type = "checkbox" name="skillSets" value="HTML"> HTML <br>
+		<input type = "checkbox" name="skillSets" value="CSS"> CSS <br>
+		Other:<br>
+		<textarea rows = "3" cols="40"></textarea><br><br>
+		</li>
+		
+		<br>
+		<input type="submit" value="Check to see the results!">
+	</form>
 
+	<ul class="button">
 
-	</div>
+	
+	<!--<li><a class="button" href="">Check to see the results!</a></li>-->	
+	</ul>
+	</ul>
+
+</div>
 </body>
 
 </html>
