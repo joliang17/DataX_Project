@@ -4,36 +4,37 @@
 <head>
 	<meta charset="UTF-8">
 
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Stylesheet.css')}}"/>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Stylesheet.css')}}" />
 
 	<title>Recommendations For You</title>
-	
+
 </head>
 
 <body>
 
-<img src="../static/Goodjob.png" alt="Image" height="60" width="60">
-<h1>  Recommendations For You </h1>
+	<img src="../static/Goodjob.png" alt="Image" height="60" width="60">
+	<h1> Recommendations For You </h1>
 
 
-<h2> Welcome... {{name}} ! </h2>
-<!--
+	<h2> Welcome... {{name}} ! </h2>
+	<!--
 Welcome ... <span id="result"></span> !
 <script>
 	document.getElementById("result").innerHTML=localStorage.getItem("textvalue");
 </script>
 -->
 
-<p> Recommendations for you with the information you provided to us: </br>
-Age: {{ age }} </br>
-Have you worked before: {{ hasWorked }} </br>
-Years of Experience that you have: {{ yrOfExp }} </br>
-</p>
+	<p> Recommendations for you with the information you provided to us: </br>
+		Age: {{ age }} </br>
+		Have you worked before: {{ hasWorked }} </br>
+		Years of Experience that you have: {{ yrOfExp }} </br>
+		Skills you have: {{ skillSets }}
+	</p>
 
 
-The jobs we recommend:
+	<b>The jobs we recommend: </b>
 
-<table>
+	<table class="Jobs_Recommendation">
 		<tr>
 			<th> Positions </th>
 			<th> Average Salary </th>
@@ -45,27 +46,34 @@ The jobs we recommend:
 			<td> Python </td>
 		</tr>
 
-</table>
-</br>
+	</table>
+	</br>
 
-</br>
-The books and Classes we recommend:
-<table>
-		<tr>
-			<th> Book </th>
-			<th> Classes </th>
-			<th> Links </th>
-		</tr>
-		<tr>
-			<td> -- </td>
-			<td> -- </td>
-			<td> -- </td>
-		</tr>
+	<!-- Display related books if user lack specific skills -->
 
-</table>
+	</br>
+	<b> If you want to learn more about the skills that you are lack of, please refer to the following resources </b>
+	<table class="Table_of_Books">
+		<thead>
+			<tr>
+				<th> Skills </th>
+				<th> Book Title / Author </th>
+				<th> Berkeley Library Access</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for value in book_list %}
+			<tr>
+				<td>{{ value[1] }}</td>
+				<td>{{ value[2] }}</td>
+				<td><a href="{{ value3 }}"> Link </a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
 
-<h3> Other links: </h3>
+	<h3> Other links: </h3>
 
 	<p> Please refer to Glassdoor to see more information about the interviews related to the job you are interested: </p>
 	<a href="https://www.glassdoor.com/index.htm">
