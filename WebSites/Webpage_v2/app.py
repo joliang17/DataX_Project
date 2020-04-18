@@ -2,13 +2,6 @@ from flask import Flask,render_template,request
 from werkzeug.datastructures import ImmutableMultiDict
 import pandas as pd
 
-# csv = readCSV('./...csv')
-# csvData
-
-def findMajor(input):
-	csvData.find(input)
-	return Major
-
 app = Flask(__name__)
 
 @app.route('/')
@@ -21,44 +14,48 @@ def profile(username):
 
 @app.route('/submitForm', methods=['POST'])
 def handleReq():
-	# name = request.form['name']
-	# age = request.form['age']
-	# hasWorked = request.form['hasWorked']
-	# yrOfExp = request.form['yrOfExp']
-	# # skillSets = request.form.getlist("skillSets")
-	# print(request.form)
-	# print(name, age)
+	error = None
+	arrow = None
+	try:
+		name = request.form['name']
+		age = request.form['age']
+		hasWorked = request.form['hasWorked']
+		yrOfExp = request.form['yrOfExp']
+		skillSets = request.form.getlist("skillSets")
+		print(request.form)
+		print(name, age)
 
-	imudict = request.form
-	dict0 = imudict.to_dict(flat=False)
+		# Read book directory csv and display it if user lack reletive skills
+		book_list = list()
+		if 'Python' not in skillSets:
+			filename = 'Book_Directory_Python.csv'
+			data_book_Python = pd.read_csv(filename, header=0)
+			book_list += list(data_book_Python.values)
+		if 'R' not in skillSets:
+			filename = 'Book_Directory_R.csv'
+			data_book_R = pd.read_csv(filename, header=0)
+			book_list += list(data_book_R.values)
 
-	name = dict0['name'][0]
-	age = dict0['age'][0]
-	hasWorked = dict0['hasWorked'][0]
-	yrOfExp = dict0['yrOfExp'][0]
-	skillSets = dict0['skillSets'] # List type
-
-
-	# Read book directory csv and display it if user lack reletive skills
-	book_list = list()
-	if 'Python' in skillSets:
-		filename = 'Book_Directory_Python.csv'
-		data_book_Python = pd.read_csv(filename, header=0)
-		book_list += list(data_book_Python.values)
-	if 'R' in skillSets:
-		filename = 'Book_Directory_R.csv'
-		data_book_R = pd.read_csv(filename, header=0)
-		book_list += list(data_book_R.values)
-
-	# check if every variable is valid
-	# if (error)
+		# check if every variable is valid
+		# if (error)
 
 
-	# major = findMajor(request.form['major'])
-	# pass variables to Model
+		# major = findMajor(request.form['major'])
+		# pass variables to Model
 
-	return render_template("Result.html", name=name, age=age, hasWorked = hasWorked,
-	yrOfExp = yrOfExp, skillSets = skillSets, book_list = book_list) #result=modelResult, )
+		return render_template("Result.html", name=name, age=age, hasWorked = hasWorked,
+		yrOfExp = yrOfExp, skillSets = skillSets, book_list = book_list) #result=modelResult, )
+	except:
+		error = "Please check if there is any missing entry!"
+		arrow = "<="
+		return render_template('JobHunting.html', error = error, arrow = arrow)
+# # Error Handling
+#
+# @app.errorhandler(werkzeug.exceptions.BadRequest)
+# def handle_bad_request(e):
+#     return 'bad request!', 400
+
+
 
 # Get the local data passed to HTML
 @app.route('/post/<int:book_id>')
@@ -76,5 +73,6 @@ def Result(age):
     # else:
     # 	return render_template('JobHunting.html')
 
+#Webpage will atuo refresh as debug = true
 if __name__ == "__main__":
-    app.run(port=8000)
+    app.run(port=8000, debug=True)
