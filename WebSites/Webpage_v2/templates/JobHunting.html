@@ -31,67 +31,87 @@
 
 
 		<h2> Please let us know more about you before we give you recommendations!</h2>
+		<h3> * Required Field</h3>
 		<ul class="userinfo">
-			</br>
+			</br></br>
 
 			<form action="submitForm" method="POST">
+
+				<!-- Disply error messages -->
+				<ul class="errorMessages"></ul>
+
 				<li>
-					<label for="name"> What is your name? </br></label>
+					<label for="name"> What is your name?* </br></label>
 					<input type="text" value="" id="name" name="name" size="30">
-					<!--<input type = "submit" value = "click" onclick="passvalues()"/> -->
+					<span style="color:red;""> {{arrow}} </span>
+					<!--<input type = " submit" value="click" onclick="passvalues()" /> -->
 				</li>
 
 				<li>
-					<label for="age"> What is your age? </br></label>
+					<label for="age"> What is your age?* </br></label>
 					<input type="text" value="" id="age" name="age" size="30">
+					<span style="color:red;""> {{arrow}} </span>
 				</li>
 
+<<<<<<< HEAD
 				<li> What is your Highest degree?
+=======
+				<li> What's your highest degree?* </br>
+>>>>>>> 02b6e285cc254ba1f72ae6063b3ef6b2d0533ae3
 					<select>
-						<option value="Associate" name="degree">Associate's</option>
+						<option value=" Associate" name="degree">Associate's</option>
 						<option value="Bachelor" name="degree">Bachelor's</option>
 						<option value="Master" name="degree">Master's</option>
 						<option value="Doctoral" name="degree">Doctorate</option>
-					</select>
+						</select>
+						<span style="color:red;""> {{arrow}} </span>
 				</li>
 
+<<<<<<< HEAD
 				<li> Which job field you are interested in ?
 					<select>
 						<option value="Data Scientist">Industrial Engineering</option>
 						<option value="Data Analyst">Data Science</option>
 						<option value=" Business Analyst">Computer Science</option>
 					</select>
+=======
+				<li> What's your major for your most recent degree?* </br>
+					<select>
+						<option value=" Industrial Engineering">Industrial Engineering</option>
+							<option value="Data Science">Data Science</option>
+							<option value="Computer Science">Computer Science</option>
+							</select>
+							<span style="color:red;""> {{arrow}} </span>
+>>>>>>> 02b6e285cc254ba1f72ae6063b3ef6b2d0533ae3
 				</li>
 
-				<li> Have your worked before?</br>
-					Yes:
-					<input type="radio" name="hasWorked" value=true></br>
-					No:
-					<input type="radio" name="hasWorked" value=false>
+				<li> Have your worked before?* <span style=" color:red;"> {{arrow}} </span> </br>
+							Yes:
+							<input type="radio" name="hasWorked" value=true></br>
+							No:
+							<input type="radio" name="hasWorked" value=false>
 
-				<li> Year of Experience
+				<li> Year of Experience </br>
 					<input type="number" name="yrOfExp" min="0" max="50" size="30">
 				</li>
 
-
 				<li>
-					Which follwing skills do you want to learn? <br>
+					Which follwing skills do you possess? <br>
 					<input type="checkbox" name="skillSets" value="Python"> Python <br>
 					<input type="checkbox" name="skillSets" value="R"> R <br>
 					<input type="checkbox" name="skillSets" value="HTML"> HTML <br>
 					<input type="checkbox" name="skillSets" value="CSS"> CSS <br>
 					Other:<br>
-					<textarea rows="3" cols="40"></textarea><br></br>
+					<textarea rows="3" cols="40"></textarea><br>
 				</li>
 
-				</br>
+				<p style="color:red; size:15"> {{error}} </p>
 				<input type="submit" value='Check to see the results!'>
 			</form>
 
 			<ul class="button">
+				</br></br>
 
-
-				<!--<li><a class="button" href="">Check to see the results!</a></li>-->
 			</ul>
 		</ul>
 
