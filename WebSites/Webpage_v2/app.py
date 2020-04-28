@@ -174,10 +174,9 @@ def handleReq():
 	else:
 		pass
 
-	#inputlist.append(int(salary))
-	inputlist.append(int(yrOfExp))
 
 	# get the counts of multiple choice questions
+	inputlist.append(int(yrOfExp))
 	inputlist.append(len(IDE))
 	inputlist.append(len(launguage))
 	inputlist.append(len(algorithm))
@@ -186,14 +185,31 @@ def handleReq():
 
 	print(inputlist)
 
+	expLev = ''
+	# Return year of Exp to Exp level
+	if int(yrOfExp) == 0:
+		expLev = 'Intership'
+	elif int(yrOfExp) == 1:
+		expLev = 'Entry'
+	elif int(yrOfExp) == 2:
+		expLev = 'Mid Senior'
+	elif int(yrOfExp) == 3:
+		expLev = 'Senior'
+	elif int(yrOfExp) == 4:
+		expLev = 'Director/Executive'
+	else:
+		pass
+
+	print(expLev)
+
 	# Read book directory csv and display it if user lack reletive skills	
 	book_list = list()
 	if 'Python' not in skillSets:
-		filename = r'Data\Book_Directory_Python.csv'
+		filename = r'Data/Book_Directory_Python.csv'
 		data_book_Python = pd.read_csv(os.path.join(dir_path, filename), header=0)
 		book_list += list(data_book_Python.values)
 	if 'R' not in skillSets:
-		filename = r'Data\Book_Directory_R.csv'
+		filename = r'Data/Book_Directory_R.csv'
 		data_book_R = pd.read_csv(os.path.join(dir_path, filename), header=0)
 		book_list += list(data_book_R.values)
 
@@ -208,7 +224,7 @@ def handleReq():
 	ans2, SalaryResult = Salary_Predict(ans1)
 	AllResult = [[job, SalaryResult[i]] for i, job in enumerate(jobsResult)]
 
-	return render_template("Result.html", name=name, age=age, book_list = book_list, skillSets = skillSets, jobsResult = AllResult) 
+	return render_template("Result.html", name=name, age=age, major=major,expLev=expLev, book_list = book_list, skillSets = skillSets, jobsResult = AllResult) 
 
 	#result=modelResult, hasWorked = hasWorked, 
 	# #yrOfExp = yrOfExp, skillSets = skillSets,
@@ -247,8 +263,8 @@ def Result(age):
 if __name__ == "__main__":
 	dir_path = os.path.dirname(os.path.realpath(__file__))
 	try:
-		svc_jobs = load(os.path.join(dir_path, r"Model\svc_jobs.pkl"))
-		svc_salary = load(os.path.join(dir_path, r"Model\svc_salary.pkl"))
+		svc_jobs = load(os.path.join(dir_path, r"Model/svc_jobs.pkl"))
+		svc_salary = load(os.path.join(dir_path, r"Model/svc_salary.pkl"))
 	except Exception as e:
 		print(str(e))
 		print('No Model Loaded!')

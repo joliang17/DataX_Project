@@ -24,12 +24,11 @@ Welcome ... <span id="result"></span> !
 </script>
 -->
 
-	<p> Recommendations for you with the information you provided to us: <br>
-		Age: {{ age }} <br>
-		Have you worked before: {{ hasWorked }} <br>
-		Years of Experience that you have: {{ yrOfExp }} <br>
+	<p> <b> What we know about you now: </b> <br>
+		Your Age: {{ age }} <br>
+		Your major:{{major}} <br>
+		Your experience level: {{ expLev }} <br>
 		Skills you have: {{ skillSets }} <br>
-		Recommend Jobs: {{ jobsResult }}
 	</p>
 
 
@@ -39,7 +38,7 @@ Welcome ... <span id="result"></span> !
 		<thead>
 			<tr>
 				<th> Positions </th>
-				<th> Average Salary </th>
+				<th> Average Salary $$$ </th>
 				<th> Skill Sets </th>
 			</tr>
 		</thead>
@@ -48,7 +47,7 @@ Welcome ... <span id="result"></span> !
 			<tr>
 				<td>{{ value[0] }}</td>
 				<!-- <td>{{ value[2] }}</td> -->
-				<td>{{ value[1] }}</td>
+				<td> {{ value[1] }}</td>
 				<!-- <td><a href="{{ value3 }}"> Link </a></td> -->
 				<td> -- </td>
 			</tr>
@@ -87,11 +86,15 @@ Welcome ... <span id="result"></span> !
 	</table>
 
 
-	<h3> Other links: </h3>
+	<h2> <b> Support links: </b> </h2>
 
 	<p> Please refer to Glassdoor to see more information about the interviews related to the job you are interested: </p>
 	<a href="https://www.glassdoor.com/index.htm">
 		Glassdoor Webpage </a>
+
+	<p> You can also check LinkedIn to see more information about the opening positions related to the job you are interested: </p>
+	<a href="https://www.linkedin.com/index.htm">
+		LinkedIN Webpage </a>
 
 </body>
 
