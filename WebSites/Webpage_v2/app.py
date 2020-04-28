@@ -148,11 +148,11 @@ def handleReq():
 	# Read book directory csv and display it if user lack reletive skills	
 	book_list = list()
 	if 'Python' not in skillSets:
-		filename = 'Book_Directory_Python.csv'
+		filename = 'Data\Book_Directory_Python.csv'
 		data_book_Python = pd.read_csv(os.path.join(dir_path, filename), header=0)
 		book_list += list(data_book_Python.values)
 	if 'R' not in skillSets:
-		filename = 'Book_Directory_R.csv'
+		filename = 'Data\Book_Directory_R.csv'
 		data_book_R = pd.read_csv(os.path.join(dir_path, filename), header=0)
 		book_list += list(data_book_R.values)
 
@@ -167,31 +167,38 @@ def handleReq():
 	temp.append(inputlist)
 	inputlist = temp
 
-    # inputlist = np.array(inputlist)
-    # inputlist = [[3,4,3,5,1,2,4,3]]
+	# Predict job titles
 
-	k_unchanged=svc_model.predict_proba(inputlist)[0]
-	k=svc_model.predict_proba(inputlist)[0]
-	ynew_result = svc_model.predict(inputlist)
-	k.sort() 
-	# Second=k[-2]
-	# Third=k[-3]
-	# Fourth=k[-4]
-	if ynew_result==0:
-		Highest = np.where(k_unchanged ==k[-2])[0]
-		Sec_high =  (np.where(k_unchanged ==k[-3])[0])
-		Third_high = (np.where(k_unchanged ==k[-4])[0])
-		ans = [Highest[0], Sec_high[0], Third_high[0]]
-		print(ans)
+    # inputlist = np.array(inputlist)
+	# inputlist = [[1,2,2,3,1,2,2,3]]
+
+	k1_unchanged = svc_jobs.predict_proba(inputlist)[0]
+	k1 = svc_jobs.predict_proba(inputlist)[0]
+
+	ynew_result1 = svc_jobs.predict(inputlist)
+	k1.sort() 
+	# print(k1_unchanged)
+	# print(k1)
+	# print(ynew_result1)
+	# Second=k1[-2]
+	# Third=k1[-3]
+	# Fourth=k1[-4]
+
+	if ynew_result1 == 0:
+		Highest = np.where(k1_unchanged == k1[-2])[0]
+		Sec_high =  (np.where(k1_unchanged == k1[-3])[0])
+		Third_high = (np.where(k1_unchanged == k1[-4])[0])
+		ans1 = [Highest[0], Sec_high[0], Third_high[0]]
+		print(ans1)
 		
 	else:
-		Highest = np.where(k_unchanged ==k[-1])[0] 
-		Sec_high =  (np.where(k_unchanged ==k[-2])[0])
-		Third_high = (np.where(k_unchanged ==k[-3])[0])
-		Four_high = (np.where(k_unchanged ==k[-4])[0])
-		ans = [Highest[0], Sec_high[0], Third_high[0], Four_high[0]]
-		ans.remove(0)
-		print(ans[0:3])
+		Highest = np.where(k1_unchanged == k1[-1])[0] 
+		Sec_high =  (np.where(k1_unchanged == k1[-2])[0])
+		Third_high = (np.where(k1_unchanged == k1[-3])[0])
+		Four_high = (np.where(k1_unchanged == k1[-4])[0])
+		ans1 = [Highest[0], Sec_high[0], Third_high[0], Four_high[0]]
+		if 0 in ans1: ans1.remove(0)
+		print(ans1[0:3])
 
 	job_dict = {0: "Student", 
 				1: "Data Scientist",
@@ -204,12 +211,49 @@ def handleReq():
 				8: "Product/Project Manager",
 				9: "Business Analyst"}
 
-	jobsResult = [job_dict.get(i) for i in ans]
+	jobsResult = [job_dict.get(i) for i in ans1]
 	print(jobsResult)
 
-	return render_template("Result.html", name=name, age=age, book_list = book_list, skillSets = skillSets, jobsResult = jobsResult) 
-		#result=modelResult, hasWorked = hasWorked,
-		#yrOfExp = yrOfExp, skillSets = skillSets,
+	# Pridict salary
+	salary_input = ans1
+	ans2 = []
+	for x in salary_input:
+		salary_model_input = [[0,0,x,0,0,0,0,0]] 
+		k_unchanged=svc_salary.predict_proba(salary_model_input)[0]
+		k=svc_salary.predict_proba(salary_model_input)[0]
+		ynew_result = svc_salary.predict(salary_model_input)
+		#print(k_unchanged)
+		k.sort() 
+		#print(k)
+
+		if ynew_result == 0:
+			Highest = np.where(k_unchanged == k[-2])[0]
+			print(Highest)
+			ans2.append(Highest[0])
+		else:
+			Highest = np.where(k_unchanged == k[-1])[0] 
+			print(Highest)
+			ans2.append(Highest[0])
+	
+	salary_dict = {0: "0-49,999",  
+					1: "50,000-59,999",  
+					2: "60,000-69,999",  
+					3: "70,000-79,999",  
+					4: "80,000-89,999",  
+					5: "90,000-99,999",  
+					6: "100,000-124,999",  
+					7: "125,000-149,999",  
+					8: "150,000-199,999",  
+					9: "200,000+"}
+
+	SalaryResult = [salary_dict.get(i) for i in ans2]
+	print(SalaryResult)
+	
+	AllResult = [[job, SalaryResult[i]] for i, job in enumerate(jobsResult)]
+
+	return render_template("Result.html", name=name, age=age, book_list = book_list, skillSets = skillSets, jobsResult = AllResult) 
+	#result=modelResult, hasWorked = hasWorked, 
+	# #yrOfExp = yrOfExp, skillSets = skillSets,
 	
 	# except:
 	# 	error = "Please check if there is any missing entry!"
@@ -246,7 +290,8 @@ if __name__ == "__main__":
     import os 
     dir_path = os.path.dirname(os.path.realpath(__file__))
     try:
-        svc_model = joblib.load(os.path.join(dir_path, "svc_model.pkl"))
+        svc_jobs = joblib.load(os.path.join(dir_path, "Model\svc_jobs.pkl"))
+        svc_salary = joblib.load(os.path.join(dir_path, "Model\svc_salary.pkl"))
     except:
         print('No Model Loaded!')
     else:
