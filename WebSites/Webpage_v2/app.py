@@ -95,15 +95,16 @@ def handleReq():
         book_list = list()
         if 'Python' not in skillSets:
             filename = 'Book_Directory_Python.csv'
-            data_book_Python = pd.read_csv(filename, header=0)
+            data_book_Python = pd.read_csv(os.path.join(dir_path, filename), header=0)
             book_list += list(data_book_Python.values)
         if 'R' not in skillSets:
             filename = 'Book_Directory_R.csv'
-            data_book_R = pd.read_csv(filename, header=0)
+            data_book_R = pd.read_csv(os.path.join(dir_path, filename), header=0)
             book_list += list(data_book_R.values)
+            print(book_list)
 
-    except:
-        print(error)
+    except Exception as e: 
+        print(str(e))
         error = "Please check if there is any missing entry!"
         arrow = "<="
         return render_template('JobHunting.html', error = error, arrow = arrow)
@@ -146,10 +147,10 @@ def handleReq():
                     8: "Product/Project Manager",
                     9: "Business Analyst"}
         
-        jobs = [job_dict.get(i) for i in ans]
-        print(jobs)
+        jobsResult = [job_dict.get(i) for i in ans]
+        print(jobsResult)
         return render_template("Result.html", name=name, age=age, hasWorked = hasWorked,
-        yrOfExp = yrOfExp, skillSets = skillSets, book_list = book_list, jobsResult = jobs) 
+        yrOfExp = yrOfExp, skillSets = skillSets, book_list = book_list, jobsResult = jobsResult)
         #result=modelResult, )
 
 # # Error Handling

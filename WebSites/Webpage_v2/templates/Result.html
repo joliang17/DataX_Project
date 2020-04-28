@@ -28,7 +28,7 @@ Welcome ... <span id="result"></span> !
 		Age: {{ age }} <br>
 		Have you worked before: {{ hasWorked }} <br>
 		Years of Experience that you have: {{ yrOfExp }} <br>
-		Skills you have: {{ skillSets }}
+		Skills you have: {{ skillSets }} <br>
 		Recommend Jobs: {{ jobsResult }}
 	</p>
 
@@ -36,23 +36,36 @@ Welcome ... <span id="result"></span> !
 	<b>The jobs we recommend: </b>
 
 	<table class="Jobs_Recommendation">
-		<tr>
-			<th> Positions </th>
-			<th> Average Salary </th>
-			<th> Skill Sets </th>
-		</tr>
-		<tr>
+		<thead>
+			<tr>
+				<th> Positions </th>
+				<th> Average Salary </th>
+				<th> Skill Sets </th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for value in jobsResult %}
+			<tr>
+				<td>{{ value }}</td>
+				<!-- <td>{{ value[2] }}</td> -->
+				<td> 0 </td>
+				<!-- <td><a href="{{ value3 }}"> Link </a></td> -->
+				<td> -- </td>
+			</tr>
+			{% endfor %}
+		</tbody>
+		<!-- <tr>
 			<td> Data Scientist </td>
 			<td> $95,000 </td>
 			<td> Python </td>
-		</tr>
+		</tr> -->
 
 	</table>
-	</br>
+	<br>
 
 	<!-- Display related books if user lack specific skills -->
 
-	</br>
+	<br>
 	<b> For the skills you hope to master, please refer to the following resources </b>
 	<table class="Table_of_Books">
 		<thead>
