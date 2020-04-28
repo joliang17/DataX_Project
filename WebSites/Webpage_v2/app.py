@@ -202,15 +202,15 @@ def handleReq():
 
 	print(expLev)
 
-	skillSets += ['SQL', 'Java', 'Julia', 'Scala', 'MATLAB', 'C', 'C++']
+	#skillSets += ['SQL', 'Java', 'Julia', 'Scala', 'MATLAB', 'C', 'C++']
 
 	# Read book directory csv and display it if user lack reletive skills	
 	book_list = list()
-	Skill_List = ['R', 'Python', 'HTML', 'CSS', 'SQL', 'Java', 'Julia', 'Scala', 'MATLAB', 'C', 'C++']
+	#Skill_List = ['R', 'Python', 'HTML', 'CSS', 'SQL', 'Java', 'Julia', 'Scala', 'MATLAB', 'C', 'C++']
 
-	Missing_Skill = [item for item in Skill_List if item not in skillSets]
+	#Missing_Skill = [item for item in Skill_List if item not in skillSets]
 
-	for skill in Missing_Skill:
+	for skill in skillSets:
 		filename = r'Data/BookInformation_' + skill + '.csv'
 		data_book = pd.read_csv(os.path.join(dir_path, filename), header=0)
 		del data_book['Unnamed: 0']
