@@ -2,7 +2,9 @@ from flask import Flask,render_template,request
 from werkzeug.datastructures import ImmutableMultiDict
 import pandas as pd
 import numpy as np
-from sklearn.externals import joblib
+# from sklearn.externals import joblib
+import os 
+from joblib import load
 
 app = Flask(__name__)
 
@@ -13,7 +15,7 @@ def Jobs_Predict(inputlist):
 
 	# Predict job titles
 
-    # inputlist = np.array(inputlist)
+	# inputlist = np.array(inputlist)
 	# inputlist = [[1,2,2,3,1,2,2,3]]
 
 	k1_unchanged = svc_jobs.predict_proba(inputlist)[0]
@@ -97,11 +99,11 @@ def Salary_Predict(ans1):
 
 @app.route('/')
 def index():
-    return render_template('JobHunting.html')
+	return render_template('JobHunting.html')
 
 @app.route('/profile/<username>')
 def profile(username):
-    return "Welcome %s" % username
+	return "Welcome %s" % username
 
 @app.route('/submitForm', methods=['POST'])
 def handleReq():
@@ -227,29 +229,29 @@ def handleReq():
 # Get the local data passed to HTML
 @app.route('/post/<int:book_id>')
 def show_post(book_id):
-    return "the book id is %s" % book_id
+	return "the book id is %s" % book_id
 
 @app.route('/Result/<int:age>', methods=['GET','POST'])
 def Result(age):
-    return render_template("Result.html", age=age)
+	return render_template("Result.html", age=age)
 
-    # if request.method == 'POST':
-    # 	age = request.form['age']
-    # 	return render_template('Result.html', age=age)
+	# if request.method == 'POST':
+	# 	age = request.form['age']
+	# 	return render_template('Result.html', age=age)
 
-    # else:
-    # 	return render_template('JobHunting.html')
+	# else:
+	# 	return render_template('JobHunting.html')
 
 
 #Webpage will atuo refresh as debug = true
 if __name__ == "__main__":
-    import os 
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    try:
-        svc_jobs = joblib.load(os.path.join(dir_path, r"Model\svc_jobs.pkl"))
-        svc_salary = joblib.load(os.path.join(dir_path, r"Model\svc_salary.pkl"))
-    except:
-        print('No Model Loaded!')
-    else:
-        # app.run(port=8000, debug=True)
-        app.run(port=8000)
+	dir_path = os.path.dirname(os.path.realpath(__file__))
+	try:
+		svc_jobs = load(os.path.join(dir_path, r"Model\svc_jobs.pkl"))
+		svc_salary = load(os.path.join(dir_path, r"Model\svc_salary.pkl"))
+	except Exception as e:
+		print(str(e))
+		print('No Model Loaded!')
+	else:
+		app.run(port=8000, debug=True)
+		# app.run(port=8000)
