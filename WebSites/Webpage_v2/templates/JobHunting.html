@@ -53,17 +53,17 @@
 				</li>
 
 				<li> What's your highest degree? <br>
-					<select>
-						<option value="Associate" name="degree">Associate's</option>
-						<option value="Bachelor" name="degree">Bachelor's</option>
-						<option value="Master" name="degree">Master's</option>
-						<option value="Doctoral" name="degree">Doctorate</option>
-						</select>
-						<span style="color:red;"> {{arrow}} </span>
+					<select  id="degree" name="degree">
+						<option value="Associate">Associate's</option>
+						<option value="Bachelor">Bachelor's</option>
+						<option value="Master">Master's</option>
+						<option value="Doctoral">Doctorate</option>
+					</select>
+					<span style="color:red;"> {{arrow}} </span>
 				</li>
 
 				<li> Which job field you are interested in ?
-					<select>
+					<select id="jobField" name="jobField">
 						<option value="Data Scientist">Industrial Engineering</option>
 						<option value="Data Analyst">Data Science</option>
 						<option value=" Business Analyst">Computer Science</option>
@@ -71,19 +71,20 @@
 				</li>
 
 				<li> What's your major for your most recent degree?* <br>
-					<select>
+					<select id="major" name="major" >
 						<option value=" Industrial Engineering">Industrial Engineering</option>
-							<option value="Data Science">Data Science</option>
-							<option value="Computer Science">Computer Science</option>
-							</select>
-							<span style="color:red;"> {{arrow}} </span>
+						<option value="Data Science">Data Science</option>
+						<option value="Computer Science">Computer Science</option>
+					</select>
+					<span style="color:red;"> {{arrow}} </span>
 				</li>
 
-				<li> Have your worked before?* <span style=" color:red;"> {{arrow}} </span> <br>
-							Yes:
-							<input type="radio" name="hasWorked" value="true"><br>
-							No:
-							<input type="radio" name="hasWorked" value="false">
+				<li> Have your worked before?* 
+					<span style=" color:red;"> {{arrow}} </span> <br>
+					Yes:
+					<input type="radio" name="hasWorked" value="true"><br>
+					No:
+					<input type="radio" name="hasWorked" value="false">
 				</li>
 
 				<li> Year of Experience <br>
