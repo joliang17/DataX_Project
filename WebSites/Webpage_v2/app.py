@@ -145,17 +145,15 @@ def handleReq():
 
 	print(inputlist)
 
-	# Read book directory csv and display it if user lack reletive skills
-
-	
+	# Read book directory csv and display it if user lack reletive skills	
 	book_list = list()
 	if 'Python' not in skillSets:
 		filename = 'Book_Directory_Python.csv'
-		data_book_Python = pd.read_csv(filename, header=0)
+		data_book_Python = pd.read_csv(os.path.join(dir_path, filename), header=0)
 		book_list += list(data_book_Python.values)
 	if 'R' not in skillSets:
 		filename = 'Book_Directory_R.csv'
-		data_book_R = pd.read_csv(filename, header=0)
+		data_book_R = pd.read_csv(os.path.join(dir_path, filename), header=0)
 		book_list += list(data_book_R.values)
 
 	# check if every variable is valid
@@ -165,49 +163,49 @@ def handleReq():
 	# major = findMajor(request.form['major'])
 	# pass variables to Model
 
-    temp = []
-    temp.append(inputlist)
-    inputlist = temp
+	temp = []
+	temp.append(inputlist)
+	inputlist = temp
 
     # inputlist = np.array(inputlist)
     # inputlist = [[3,4,3,5,1,2,4,3]]
 
-    k_unchanged=svc_model.predict_proba(Xnew)[0]
-    k=svc_model.predict_proba(Xnew)[0]
-    ynew_result = svc_model.predict(Xnew)
-    k.sort() 
-    # Second=k[-2]
-    # Third=k[-3]
-    # Fourth=k[-4]
-    if ynew_result==0:
-        Highest = np.where(k_unchanged ==k[-2])[0]
-        Sec_high =  (np.where(k_unchanged ==k[-3])[0])
-        Third_high = (np.where(k_unchanged ==k[-4])[0])
-        ans = [Highest[0], Sec_high[0], Third_high[0]]
-        print(ans)
-        
-    else:
-        Highest = np.where(k_unchanged ==k[-1])[0] 
-        Sec_high =  (np.where(k_unchanged ==k[-2])[0])
-        Third_high = (np.where(k_unchanged ==k[-3])[0])
-        Four_high = (np.where(k_unchanged ==k[-4])[0])
-        ans = [Highest[0], Sec_high[0], Third_high[0], Four_high[0]]
-        ans.remove(0)
-        print(ans[0:3])
-    
-    job_dict = {0: "Student", 
-                1: "Data Scientist",
-                2: "Software Engineer",
-                3: "Data Analyst",
-                4: "Data Engineer",
-                5: "Statistician",
-                6: "DBA/Database Engineer",
-                7: "Research Scientist",
-                8: "Product/Project Manager",
-                9: "Business Analyst"}
-    
-    jobsResult = [job_dict.get(i) for i in ans]
-    print(jobsResult)
+	k_unchanged=svc_model.predict_proba(inputlist)[0]
+	k=svc_model.predict_proba(inputlist)[0]
+	ynew_result = svc_model.predict(inputlist)
+	k.sort() 
+	# Second=k[-2]
+	# Third=k[-3]
+	# Fourth=k[-4]
+	if ynew_result==0:
+		Highest = np.where(k_unchanged ==k[-2])[0]
+		Sec_high =  (np.where(k_unchanged ==k[-3])[0])
+		Third_high = (np.where(k_unchanged ==k[-4])[0])
+		ans = [Highest[0], Sec_high[0], Third_high[0]]
+		print(ans)
+		
+	else:
+		Highest = np.where(k_unchanged ==k[-1])[0] 
+		Sec_high =  (np.where(k_unchanged ==k[-2])[0])
+		Third_high = (np.where(k_unchanged ==k[-3])[0])
+		Four_high = (np.where(k_unchanged ==k[-4])[0])
+		ans = [Highest[0], Sec_high[0], Third_high[0], Four_high[0]]
+		ans.remove(0)
+		print(ans[0:3])
+
+	job_dict = {0: "Student", 
+				1: "Data Scientist",
+				2: "Software Engineer",
+				3: "Data Analyst",
+				4: "Data Engineer",
+				5: "Statistician",
+				6: "DBA/Database Engineer",
+				7: "Research Scientist",
+				8: "Product/Project Manager",
+				9: "Business Analyst"}
+
+	jobsResult = [job_dict.get(i) for i in ans]
+	print(jobsResult)
 
 	return render_template("Result.html", name=name, age=age, book_list = book_list, skillSets = skillSets, jobsResult = jobsResult) 
 		#result=modelResult, hasWorked = hasWorked,
@@ -252,5 +250,5 @@ if __name__ == "__main__":
     except:
         print('No Model Loaded!')
     else:
-        app.run(port=8000, debug=True)
-        # app.run(port=8000)
+        # app.run(port=8000, debug=True)
+        app.run(port=8000)
