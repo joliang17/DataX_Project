@@ -24,7 +24,7 @@ import os
 # # Connect to a website
 
 # %%
-Skill_Set = ['R', 'Python', 'HTML', 'CSS', 'SQL']
+Skill_Set = ['R', 'Python', 'HTML', 'CSS', 'SQL', 'Java', 'Julia', 'Scala', 'MATLAB', 'C', 'C++']
 
 
 for skill in Skill_Set:
@@ -41,7 +41,7 @@ for skill in Skill_Set:
     # # Locate to specific class
 
     # %%
-    Vertical_Box = soup.find_all('span',class_="briefcitTitle")[:5]
+    Vertical_Box = soup.find_all('span',class_="briefcitTitle")[:10]
 
     # %%
     BookInformation = pd.DataFrame(columns = ['BookName', 'Href'])
@@ -49,16 +49,17 @@ for skill in Skill_Set:
     # %%
     for block in Vertical_Box:
         Href = 'http://oskicat.berkeley.edu' + block.a['href']
-        BookName = block.text.replace('\n', '')
+        BookName = block.text.replace('\n', '').replace('[electronic resource]', '').replace('  ', ' ').replace('--', ':').replace('.', ' ').replace(' : ', ': ')
         BookList = [BookName, Href]
         BookList = pd.Series(BookList, index = BookInformation.columns)
         BookInformation = BookInformation.append(BookList, ignore_index=True)
     BookInformation
-
+    
+    BookInformation = BookInformation.drop_duplicates(subset=['BookName'],keep='first')
 
 # %%
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    BookInformation.to_csv(os.path.join(dir_path, "BookInformation_" + skill + ".csv"))
+    BookInformation.to_csv(os.path.join(dir_path, "Data\BookInformation_" + skill + ".csv"))
     # BookInformation.to_csv("BookInformation_R.csv")
 
 
