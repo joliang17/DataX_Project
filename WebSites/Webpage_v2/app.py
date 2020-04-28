@@ -9,9 +9,6 @@ from joblib import load
 app = Flask(__name__)
 
 def Jobs_Predict(inputlist):
-	temp = []
-	temp.append(inputlist)
-	inputlist = temp
 
 	# Predict job titles
 
@@ -61,11 +58,12 @@ def Jobs_Predict(inputlist):
 	print(jobsResult)
 	return ans1, jobsResult
 
-def Salary_Predict(ans1):
+def Salary_Predict(ans1, inputlist):
 	salary_input = ans1
 	ans2 = []
 	for x in salary_input:
-		salary_model_input = [[0,0,x,0,0,0,0,0]] 
+		salary_model_input = inputlist
+		salary_model_input[0][2] = x
 		k_unchanged=svc_salary.predict_proba(salary_model_input)[0]
 		k=svc_salary.predict_proba(salary_model_input)[0]
 		ynew_result = svc_salary.predict(salary_model_input)
@@ -231,11 +229,14 @@ def handleReq():
 	# check if every variable is valid
 	# if (error)
 
+	temp = []
+	temp.append(inputlist)
+	inputlist = temp
 
 	# pass variables to Model
 	ans1, jobsResult = Jobs_Predict(inputlist)
 	# Pridict salary
-	ans2, SalaryResult = Salary_Predict(ans1)
+	ans2, SalaryResult = Salary_Predict(ans1, inputlist)
 
 	filename = r'Data/JobInformation.csv'
 	data_job = pd.read_csv(os.path.join(dir_path, filename), header=0)
@@ -297,5 +298,5 @@ if __name__ == "__main__":
 		print(str(e))
 		print('No Model Loaded!')
 	else:
-		app.run(port=8000, debug=True)
-		# app.run(port=8000)
+		# app.run(port=8000, debug=True)
+		app.run(port=8000)
