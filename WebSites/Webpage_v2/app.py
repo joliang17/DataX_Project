@@ -1,9 +1,8 @@
 from flask import Flask,render_template,request
-from werkzeug.datastructures import ImmutableMultiDict
 import pandas as pd
 import numpy as np
 # from sklearn.externals import joblib
-import os 
+import os
 from joblib import load
 
 app = Flask(__name__)
@@ -19,7 +18,7 @@ def Jobs_Predict(inputlist):
 	k1 = svc_jobs.predict_proba(inputlist)[0]
 
 	ynew_result1 = svc_jobs.predict(inputlist)
-	k1.sort() 
+	k1.sort()
 	# print(k1_unchanged)
 	# print(k1)
 	# print(ynew_result1)
@@ -33,9 +32,9 @@ def Jobs_Predict(inputlist):
 		Third_high = (np.where(k1_unchanged == k1[-4])[0])
 		ans1 = [Highest[0], Sec_high[0], Third_high[0]]
 		print(ans1)
-		
+
 	else:
-		Highest = np.where(k1_unchanged == k1[-1])[0] 
+		Highest = np.where(k1_unchanged == k1[-1])[0]
 		Sec_high =  (np.where(k1_unchanged == k1[-2])[0])
 		Third_high = (np.where(k1_unchanged == k1[-3])[0])
 		Four_high = (np.where(k1_unchanged == k1[-4])[0])
@@ -43,7 +42,7 @@ def Jobs_Predict(inputlist):
 		if 0 in ans1: ans1.remove(0)
 		print(ans1[0:3])
 
-	job_dict = {0: "Student", 
+	job_dict = {0: "Student",
 				1: "Data Scientist",
 				2: "Software Engineer",
 				3: "Data Analyst",
@@ -68,7 +67,7 @@ def Salary_Predict(ans1, inputlist):
 		k=svc_salary.predict_proba(salary_model_input)[0]
 		ynew_result = svc_salary.predict(salary_model_input)
 		#print(k_unchanged)
-		k.sort() 
+		k.sort()
 		#print(k)
 
 		if ynew_result == 0:
@@ -76,19 +75,19 @@ def Salary_Predict(ans1, inputlist):
 			print(Highest)
 			ans2.append(Highest[0])
 		else:
-			Highest = np.where(k_unchanged == k[-1])[0] 
+			Highest = np.where(k_unchanged == k[-1])[0]
 			print(Highest)
 			ans2.append(Highest[0])
-	
-	salary_dict = {0: "0-49,999",  
-					1: "50,000-59,999",  
-					2: "60,000-69,999",  
-					3: "70,000-79,999",  
-					4: "80,000-89,999",  
-					5: "90,000-99,999",  
-					6: "100,000-124,999",  
-					7: "125,000-149,999",  
-					8: "150,000-199,999",  
+
+	salary_dict = {0: "0-49,999",
+					1: "50,000-59,999",
+					2: "60,000-69,999",
+					3: "70,000-79,999",
+					4: "80,000-89,999",
+					5: "90,000-99,999",
+					6: "100,000-124,999",
+					7: "125,000-149,999",
+					8: "150,000-199,999",
 					9: "200,000+"}
 
 	SalaryResult = [salary_dict.get(i) for i in ans2]
@@ -109,7 +108,7 @@ def handleReq():
 	arrow = None
 
 	#hasWorked = request.form['hasWorked']
-	
+
 	#try:
 	name = request.form['name']
 	age = request.form['age']
@@ -134,9 +133,9 @@ def handleReq():
 	elif int(age) in range (25, 40):
 		inputlist.append(1)
 	elif int(age) in range (40, 55):
-		inputlist.append(2) 
+		inputlist.append(2)
 	elif int(age) in range (55, 120):
-		inputlist.append(3)  
+		inputlist.append(3)
 	else:
 		pass
 
@@ -144,9 +143,9 @@ def handleReq():
 	print(degree)
 	type(degree)
 	inputlist.append(int(degree))
-	
+
 	# get the salary
-	
+
 	if int(salary) in range (0, 1000):
 		inputlist.append(0)
 	elif int(salary) in range (1000, 40000):
@@ -154,9 +153,9 @@ def handleReq():
 	elif int(salary) in range (40000, 50000):
 		inputlist.append(2)
 	elif int(salary) in range (50000, 60000):
-		inputlist.append(3) 
+		inputlist.append(3)
 	elif int(salary) in range (60000, 70000):
-		inputlist.append(4) 
+		inputlist.append(4)
 	elif int(salary) in range (70000, 80000):
 		inputlist.append(5)
 	elif int(salary) in range (80000, 90000):
@@ -168,7 +167,7 @@ def handleReq():
 	elif int(salary) in range (150000, 200000):
 		inputlist.append(9)
 	elif int(salary) >= 200000:
-		inputlist.append(10)       
+		inputlist.append(10)
 	else:
 		pass
 
@@ -202,7 +201,7 @@ def handleReq():
 
 	#skillSets += ['SQL', 'Java', 'Julia', 'Scala', 'MATLAB', 'C', 'C++']
 
-	# Read book directory csv and display it if user lack reletive skills	
+	# Read book directory csv and display it if user lack reletive skills
 	book_list = list()
 	#Skill_List = ['R', 'Python', 'HTML', 'CSS', 'SQL', 'Java', 'Julia', 'Scala', 'MATLAB', 'C', 'C++']
 
@@ -215,7 +214,7 @@ def handleReq():
 		data_book['Skill'] = skill
 		data_book = data_book[['Skill', 'BookName', 'Href']]
 		book_list += list(data_book.values)[:3]
-    		
+		
 
 	# if 'Python' not in skillSets:
 		# filename = r'Data\Book_Directory_Python.csv'
@@ -241,7 +240,7 @@ def handleReq():
 	filename = r'Data/JobInformation.csv'
 	data_job = pd.read_csv(os.path.join(dir_path, filename), header=0)
 	del data_job['Unnamed: 0']
-	
+
 	AllResult = []
 	for i, job in enumerate(jobsResult):
 		PreSalary = SalaryResult[i]
@@ -253,11 +252,11 @@ def handleReq():
 
 		AllResult.append([job, PreSalary, jobSkills])
 
-	return render_template("Result.html", name=name, age=age, major=major,expLev=expLev, book_list = book_list, skillSets = skillSets, jobsResult = AllResult) 
+	return render_template("Result.html", name=name, age=age, major=major,expLev=expLev, book_list = book_list, skillSets = skillSets, jobsResult = AllResult)
 
-	#result=modelResult, hasWorked = hasWorked, 
+	#result=modelResult, hasWorked = hasWorked,
 	# #yrOfExp = yrOfExp, skillSets = skillSets,
-	
+
 	# except:
 	# 	error = "Please check if there is any missing entry!"
 	# 	arrow = "<="
@@ -269,7 +268,7 @@ def handleReq():
 #     return 'bad request!', 400
 
 
-	
+
 
 # Get the local data passed to HTML
 @app.route('/post/<int:book_id>')
