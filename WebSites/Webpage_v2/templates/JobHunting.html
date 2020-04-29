@@ -33,7 +33,7 @@
 		<h2> Please let us know more about you before we give you recommendations!</h2>
 		<h3> * Required Field </h3>
 		<ul class="userinfo">
-			<br><br>
+			<br>
 
 			<form action="submitForm" method="POST">
 
@@ -42,7 +42,7 @@
 
 				<li>
 					1.
-					<label for="name"> <b> What is your name?* </b><br></label>
+					<label for="name" style="color:#E3A634"> <b> What is your name?* </b><br></label>
 					<input type="text" value="" id="name" name="name" size="30">
 					<span style="color:red;"> {{arrow}} </span>
 				</li>
@@ -51,7 +51,7 @@
 
 				<li>
 					2.
-					<label for="age"> <b> What is your age?* </b><br></label>
+					<label for="age" style="color:#E3A634"> <b> What is your age?* </b><br></label>
 					<input type="text" value="" id="age" name="age" size="30">
 					<span style="color:red;"> {{arrow}} </span>
 				</li>
@@ -60,7 +60,7 @@
 
 				<li>
 					3.
-					<b>What's your highest degree?</b> <br>
+					<b style="color:#E3A634">What's your highest degree?</b> <br>
 					<select id="degree" name="degree">
 						<option value="0">I prefer not to answer</option>
 						<option value="0">High School</option>
@@ -76,7 +76,7 @@
 
 				<li>
 					4.
-					<label for="salary"><b> What is your expected annual salary in $? </b> * <br></label>
+					<label for="salary" style="color:#E3A634"><b> What is your expected annual salary in $? </b> * <br></label>
 					<input type="text" value="" id="salary" name="salary" size="30">
 					<span style="color:red;"> {{arrow}} </span>
 				</li>
@@ -85,7 +85,7 @@
 
 				<li>
 					5.
-					<b>What's your major/field of study?</b> <br>
+					<b style="color:#E3A634">What's your major/field of study?</b> <br>
 					<select id="major" name="major">
 						<option value="Industrial Engineering">Industrial Engineering</option>
 						<option value="Statistics">Statistics</option>
@@ -106,7 +106,7 @@
 
 				<li>
 					6.
-					<b>Year of Experience you have related to Machine Learning </b> <br>
+					<b style="color:#E3A634">Year of Experience you have related to Machine Learning </b> <br>
 					<select id="yrOfExp" name="yrOfExp">
 						<option value="0" name="yr0fExp"> Less than a year </option>
 						<option value="1" name="yrOfExp"> 1 - 3 years </option>
@@ -120,7 +120,7 @@
 
 				<li>
 					7.
-					<b>Which of the following integrated development environments (IDE's) do you use on a regular basis? </b><br>
+					<b style="color:#E3A634">Which of the following integrated development environments (IDE's) do you use on a regular basis? </b><br>
 					<input type="checkbox" name="IDE" value=""> Jupyter Notebook
 					<input type="checkbox" name="IDE" value=""> RStudio
 					<input type="checkbox" name="IDE" value=""> Pycharm
@@ -131,7 +131,7 @@
 
 				<li>
 					8.
-					<b>What programming languages do you use on a regular basis?</b> <br>
+					<b style="color:#E3A634">What programming languages do you use on a regular basis?</b> <br>
 					<input type="checkbox" name="launguage" value=""> Python
 					<input type="checkbox" name="launguage" value=""> R
 					<input type="checkbox" name="launguage" value=""> SQL
@@ -145,7 +145,7 @@
 
 				<li>
 					9.
-					<b>Which of the following ML algorithms do you use on a regular basis?</b> <br>
+					<b style="color:#E3A634">Which of the following ML algorithms do you use on a regular basis?</b> <br>
 					<input type="checkbox" name="algorithms" value=""> Linear or Logistic Regression
 					<input type="checkbox" name="algorithms" value=""> Decision Trees or Random Forests
 					<input type="checkbox" name="algorithms" value=""> Gradient Boosting Machines <br>
@@ -159,7 +159,7 @@
 
 				<li>
 					10.
-					<b>Which of the following machine learning frameworks do you use on a regular basis?</b><br>
+					<b style="color:#E3A634">Which of the following machine learning frameworks do you use on a regular basis?</b><br>
 					<input type="checkbox" name="framworks" value=""> Scikit-learn
 					<input type="checkbox" name="framworks" value=""> TensorFlow
 					<input type="checkbox" name="framworks" value=""> Keras
@@ -174,13 +174,13 @@
 
 				<li>
 					11.
-					<b>Which follwing skills do you want go improve? </b><br>
+					<b style="color:#E3A634">Which follwing skills do you want go improve? </b><br>
 					<input type="checkbox" name="skillSets" value="Python"> Python <br>
 					<input type="checkbox" name="skillSets" value="R"> R
 					<input type="checkbox" name="skillSets" value="HTML"> HTML
 					<input type="checkbox" name="skillSets" value="CSS"> CSS
 					<br>Other:<br>
-					<textarea rows="1" cols="20"></textarea><br>
+					<textarea rows="1" cols="20"></textarea><br><br>
 				</li>
 
 				<input type="submit" value="Check to see the results!" style="font-size:30px">
