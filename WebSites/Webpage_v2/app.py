@@ -188,7 +188,7 @@ def handleReq():
 	expLev = ''
 	# Return year of Exp to Exp level
 	if int(yrOfExp) == 0:
-		expLev = 'Intership'
+		expLev = 'Internship'
 	elif int(yrOfExp) == 1:
 		expLev = 'Entry'
 	elif int(yrOfExp) == 2:
