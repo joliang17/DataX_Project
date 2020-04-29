@@ -38,7 +38,7 @@
 			<form action="submitForm" method="POST">
 
 				<!-- Disply error messages -->
-				<ul class="errorMessages"></ul>
+				<p class="errorMessages" style="color:red; size:20"><strong> {{error}}</strong></p>
 
 				<li>
 					1.
@@ -147,9 +147,9 @@
 					9.
 					<b>Which of the following ML algorithms do you use on a regular basis?</b> <br>
 					<input type="checkbox" name="algorithms" value=""> Linear or Logistic Regression
-					<input type="checkbox" name="algorithms" value=""> Decision Trees or Random Forests <br>
-					<input type="checkbox" name="algorithms" value=""> Gradient Boosting Machines
-					<input type="checkbox" name="algorithms" value=""> Bayesian Approaches <br>
+					<input type="checkbox" name="algorithms" value=""> Decision Trees or Random Forests
+					<input type="checkbox" name="algorithms" value=""> Gradient Boosting Machines <br>
+					<input type="checkbox" name="algorithms" value=""> Bayesian Approaches
 					<input type="checkbox" name="algorithms" value=""> Convolutional Neural Networks
 					<input type="checkbox" name="algorithms" value=""> Generative Adversarial Networks <br>
 					<input type="checkbox" name="algorithms" value=""> Other <br>
@@ -183,7 +183,6 @@
 					<textarea rows="1" cols="20"></textarea><br>
 				</li>
 
-				<p style="color:red; size:15"> {{error}} </p>
 				<input type="submit" value="Check to see the results!" style="font-size:30px">
 			</form>
 

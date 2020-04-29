@@ -109,159 +109,162 @@ def handleReq():
 
 	#hasWorked = request.form['hasWorked']
 
-	#try:
-	name = request.form['name']
-	age = request.form['age']
-	degree = request.form['degree']
-	salary = request.form['salary']
-	major = request.form['major']
-	yrOfExp = request.form['yrOfExp']
-	IDE = request.form.getlist('IDE')
-	launguage = request.form.getlist('launguage')
-	algorithm = request.form.getlist('algorithms')
-	framwork = request.form.getlist('framworks')
-	skillSets = request.form.getlist("skillSets")
-	print(request.form)
-	print(name, age)
+	try:
+		name = request.form['name']
+		age = request.form['age']
+		salary = request.form['salary']
+		## Check if there are missing entries in the above
+		degree = request.form['degree']
+		major = request.form['major']
+		yrOfExp = request.form['yrOfExp']
+		IDE = request.form.getlist('IDE')
+		launguage = request.form.getlist('launguage')
+		algorithm = request.form.getlist('algorithms')
+		framwork = request.form.getlist('framworks')
+		skillSets = request.form.getlist("skillSets")
+		print(request.form)
+		print(name, age)
 
-	# Get the input list for backend model
-	inputlist = []
+		# Get the input list for backend model
+		inputlist = []
 
-	# Get age range
-	if int(age) in range (0, 25):
-		inputlist.append(0)
-	elif int(age) in range (25, 40):
-		inputlist.append(1)
-	elif int(age) in range (40, 55):
-		inputlist.append(2)
-	elif int(age) in range (55, 120):
-		inputlist.append(3)
-	else:
-		pass
+		# Get age range
+		if int(age) in range (0, 25):
+			inputlist.append(0)
+		elif int(age) in range (25, 40):
+			inputlist.append(1)
+		elif int(age) in range (40, 55):
+			inputlist.append(2)
+		elif int(age) in range (55, 120):
+			inputlist.append(3)
+		else:
+			pass
 
-	# get the degree, salary, year of experience
-	print(degree)
-	type(degree)
-	inputlist.append(int(degree))
+		# get the degree, salary, year of experience
+		print(degree)
+		type(degree)
+		inputlist.append(int(degree))
 
-	# get the salary
+		# get the salary
 
-	if int(salary) in range (0, 1000):
-		inputlist.append(0)
-	elif int(salary) in range (1000, 40000):
-		inputlist.append(1)
-	elif int(salary) in range (40000, 50000):
-		inputlist.append(2)
-	elif int(salary) in range (50000, 60000):
-		inputlist.append(3)
-	elif int(salary) in range (60000, 70000):
-		inputlist.append(4)
-	elif int(salary) in range (70000, 80000):
-		inputlist.append(5)
-	elif int(salary) in range (80000, 90000):
-		inputlist.append(6)
-	elif int(salary) in range (90000, 125000):
-		inputlist.append(7)
-	elif int(salary) in range (125000, 150000):
-		inputlist.append(8)
-	elif int(salary) in range (150000, 200000):
-		inputlist.append(9)
-	elif int(salary) >= 200000:
-		inputlist.append(10)
-	else:
-		pass
-
-
-	# get the counts of multiple choice questions
-	inputlist.append(int(yrOfExp))
-	inputlist.append(len(IDE))
-	inputlist.append(len(launguage))
-	inputlist.append(len(algorithm))
-	inputlist.append(len(framwork))
+		if int(salary) in range (0, 1000):
+			inputlist.append(0)
+		elif int(salary) in range (1000, 40000):
+			inputlist.append(1)
+		elif int(salary) in range (40000, 50000):
+			inputlist.append(2)
+		elif int(salary) in range (50000, 60000):
+			inputlist.append(3)
+		elif int(salary) in range (60000, 70000):
+			inputlist.append(4)
+		elif int(salary) in range (70000, 80000):
+			inputlist.append(5)
+		elif int(salary) in range (80000, 90000):
+			inputlist.append(6)
+		elif int(salary) in range (90000, 125000):
+			inputlist.append(7)
+		elif int(salary) in range (125000, 150000):
+			inputlist.append(8)
+		elif int(salary) in range (150000, 200000):
+			inputlist.append(9)
+		elif int(salary) >= 200000:
+			inputlist.append(10)
+		else:
+			pass
 
 
-	print(inputlist)
+		# get the counts of multiple choice questions
+		inputlist.append(int(yrOfExp))
+		inputlist.append(len(IDE))
+		inputlist.append(len(launguage))
+		inputlist.append(len(algorithm))
+		inputlist.append(len(framwork))
 
-	expLev = ''
-	# Return year of Exp to Exp level
-	if int(yrOfExp) == 0:
-		expLev = 'Internship'
-	elif int(yrOfExp) == 1:
-		expLev = 'Entry'
-	elif int(yrOfExp) == 2:
-		expLev = 'Mid Senior'
-	elif int(yrOfExp) == 3:
-		expLev = 'Senior'
-	elif int(yrOfExp) == 4:
-		expLev = 'Director/Executive'
-	else:
-		pass
 
-	print(expLev)
+		print(inputlist)
 
-	#skillSets += ['SQL', 'Java', 'Julia', 'Scala', 'MATLAB', 'C', 'C++']
+		expLev = ''
+		# Return year of Exp to Exp level
+		if int(yrOfExp) == 0:
+			expLev = 'Internship'
+		elif int(yrOfExp) == 1:
+			expLev = 'Entry'
+		elif int(yrOfExp) == 2:
+			expLev = 'Mid Senior'
+		elif int(yrOfExp) == 3:
+			expLev = 'Senior'
+		elif int(yrOfExp) == 4:
+			expLev = 'Director/Executive'
+		else:
+			pass
 
-	# Read book directory csv and display it if user lack reletive skills
-	book_list = list()
-	#Skill_List = ['R', 'Python', 'HTML', 'CSS', 'SQL', 'Java', 'Julia', 'Scala', 'MATLAB', 'C', 'C++']
+		print(expLev)
 
-	#Missing_Skill = [item for item in Skill_List if item not in skillSets]
+		#skillSets += ['SQL', 'Java', 'Julia', 'Scala', 'MATLAB', 'C', 'C++']
 
-	for skill in skillSets:
-		filename = r'Data/BookInformation_' + skill + '.csv'
-		data_book = pd.read_csv(os.path.join(dir_path, filename), header=0)
-		del data_book['Unnamed: 0']
-		data_book['Skill'] = skill
-		data_book = data_book[['Skill', 'BookName', 'Href']]
-		book_list += list(data_book.values)[:3]
-		
+		# Read book directory csv and display it if user lack reletive skills
+		book_list = list()
+		#Skill_List = ['R', 'Python', 'HTML', 'CSS', 'SQL', 'Java', 'Julia', 'Scala', 'MATLAB', 'C', 'C++']
 
-	# if 'Python' not in skillSets:
-		# filename = r'Data\Book_Directory_Python.csv'
-		# data_book_Python = pd.read_csv(os.path.join(dir_path, filename), header=0)
-		# book_list += list(data_book_Python.values)
-	# if 'R' not in skillSets:
-		# filename = r'Data\Book_Directory_R.csv'
-		# data_book_R = pd.read_csv(os.path.join(dir_path, filename), header=0)
-		# book_list += list(data_book_R.values)
+		#Missing_Skill = [item for item in Skill_List if item not in skillSets]
 
-	# check if every variable is valid
-	# if (error)
+		for skill in skillSets:
+			filename = r'Data/BookInformation_' + skill + '.csv'
+			data_book = pd.read_csv(os.path.join(dir_path, filename), header=0)
+			del data_book['Unnamed: 0']
+			data_book['Skill'] = skill
+			data_book = data_book[['Skill', 'BookName', 'Href']]
+			book_list += list(data_book.values)[:3]
 
-	temp = []
-	temp.append(inputlist)
-	inputlist = temp
 
-	# pass variables to Model
-	ans1, jobsResult = Jobs_Predict(inputlist)
-	# Pridict salary
-	ans2, SalaryResult = Salary_Predict(ans1, inputlist)
+		# if 'Python' not in skillSets:
+			# filename = r'Data\Book_Directory_Python.csv'
+			# data_book_Python = pd.read_csv(os.path.join(dir_path, filename), header=0)
+			# book_list += list(data_book_Python.values)
+		# if 'R' not in skillSets:
+			# filename = r'Data\Book_Directory_R.csv'
+			# data_book_R = pd.read_csv(os.path.join(dir_path, filename), header=0)
+			# book_list += list(data_book_R.values)
 
-	filename = r'Data/JobInformation.csv'
-	data_job = pd.read_csv(os.path.join(dir_path, filename), header=0)
-	del data_job['Unnamed: 0']
+		# check if every variable is valid
+		# if (error)
 
-	AllResult = []
-	for i, job in enumerate(jobsResult):
-		PreSalary = SalaryResult[i]
+		temp = []
+		temp.append(inputlist)
+		inputlist = temp
 
-		jobInfo = data_job[data_job['Job_Title'] == job][['Job_Title', 'Salary', 'Skills', 'Href']]
+		# pass variables to Model
+		ans1, jobsResult = Jobs_Predict(inputlist)
+		# Pridict salary
+		ans2, SalaryResult = Salary_Predict(ans1, inputlist)
 
-		# AvgSalary = jobInfo['Salary'].values[0][1:]
-		jobSkills = ', '.join(list(jobInfo['Skills'].values))
+		filename = r'Data/JobInformation.csv'
+		data_job = pd.read_csv(os.path.join(dir_path, filename), header=0)
+		del data_job['Unnamed: 0']
 
-		AllResult.append([job, PreSalary, jobSkills])
+		AllResult = []
+		for i, job in enumerate(jobsResult):
+			PreSalary = SalaryResult[i]
 
-	return render_template("Result.html", name=name, age=age, major=major,expLev=expLev, book_list = book_list, skillSets = skillSets, jobsResult = AllResult)
+			jobInfo = data_job[data_job['Job_Title'] == job][['Job_Title', 'Salary', 'Skills', 'Href']]
 
-	#result=modelResult, hasWorked = hasWorked,
-	# #yrOfExp = yrOfExp, skillSets = skillSets,
+			# AvgSalary = jobInfo['Salary'].values[0][1:]
+			jobSkills = ', '.join(list(jobInfo['Skills'].values))
 
-	# except:
-	# 	error = "Please check if there is any missing entry!"
-	# 	arrow = "<="
-	# 	return render_template('JobHunting.html', error = error, arrow = arrow)
+			AllResult.append([job, PreSalary, jobSkills])
+
+		return render_template("Result.html", name=name, age=age, major=major,expLev=expLev, book_list = book_list, skillSets = skillSets, jobsResult = AllResult)
+
+		#result=modelResult, hasWorked = hasWorked,
+		# #yrOfExp = yrOfExp, skillSets = skillSets,
+
+
 # # Error Handling
+	except:
+		error = "Please check if there is any missing entry!"
+		arrow = "<="
+		return render_template('JobHunting.html', error = error, arrow = arrow)
+
 #
 # @app.errorhandler(werkzeug.exceptions.BadRequest)
 # def handle_bad_request(e):
