@@ -1,0 +1,11 @@
+,CourseName,Rating,ClassDifficulty,PartnerName,Href
+0,Functional Programming in Scala,4.7,Intermediate,École Polytechnique Fédérale de Lausanne,www.coursera.org/specializations/scala
+1,Functional Programming Principles in Scala,4.8,Intermediate,École Polytechnique Fédérale de Lausanne,www.coursera.org/learn/progfun1
+2,Big Data Analysis with Scala and Spark,4.7,Mixed,École Polytechnique Fédérale de Lausanne,www.coursera.org/learn/scala-spark-big-data
+3,Algorithms,4.8,Intermediate,Stanford University,www.coursera.org/specializations/algorithms
+4,Functional Program Design in Scala,4.5,Intermediate,École Polytechnique Fédérale de Lausanne,www.coursera.org/learn/progfun2
+5,IBM Data Science,4.6,Beginner,IBM,www.coursera.org/professional-certificates/ibm-data-science
+6,Building Scalable Java Microservices with Spring Boot and Spring Cloud,4.3,Intermediate,Google Cloud,www.coursera.org/learn/google-cloud-java-spring
+7,"Big Data Analysis: Hive, Spark SQL, DataFrames and GraphFrames",4,Advanced,Yandex,www.coursera.org/learn/big-data-analysis
+8,Introduction to Scripting in Python,4.7,Beginner,Rice University,www.coursera.org/specializations/introduction-scripting-in-python
+9,Parallel programming,4.4,Intermediate,École Polytechnique Fédérale de Lausanne,www.coursera.org/learn/parprog1
