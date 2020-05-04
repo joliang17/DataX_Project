@@ -204,17 +204,25 @@ def handleReq():
 
 		# Read book directory csv and display it if user lack reletive skills
 		book_list = list()
+		course_list = list()
 		#Skill_List = ['R', 'Python', 'HTML', 'CSS', 'SQL', 'Java', 'Julia', 'Scala', 'MATLAB', 'C', 'C++']
 
 		#Missing_Skill = [item for item in Skill_List if item not in skillSets]
 
 		for skill in skillSets:
-			filename = r'Data/BookInformation_' + skill + '.csv'
-			data_book = pd.read_csv(os.path.join(dir_path, filename), header=0)
+			filename_book = r'Data/BookInformation_' + skill + '.csv'
+			data_book = pd.read_csv(os.path.join(dir_path, filename_book), header=0)
 			del data_book['Unnamed: 0']
 			data_book['Skill'] = skill
 			data_book = data_book[['Skill', 'BookName', 'Href']]
 			book_list += list(data_book.values)[:3]
+			
+			filename_course = r'Data/CourseInformation_' + skill + '.csv'
+			data_course = pd.read_csv(os.path.join(dir_path, filename_course), header=0)
+			del data_course['Unnamed: 0']
+			data_course['Skill'] = skill
+			data_course = data_course[['Skill', 'CourseName', 'Href']]
+			course_list += list(data_course.values)[:3]
 
 
 		# if 'Python' not in skillSets:
@@ -253,7 +261,7 @@ def handleReq():
 
 			AllResult.append([job, PreSalary, jobSkills])
 
-		return render_template("Result.html", name=name, age=age, major=major,expLev=expLev, book_list = book_list, skillSets = skillSets, jobsResult = AllResult)
+		return render_template("Result.html", name=name, age=age, major=major,expLev=expLev, book_list=book_list, course_list=course_list, skillSets = skillSets, jobsResult=AllResult)
 
 		#result=modelResult, hasWorked = hasWorked,
 		# #yrOfExp = yrOfExp, skillSets = skillSets,
