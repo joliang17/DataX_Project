@@ -54,6 +54,7 @@ def Jobs_Predict(inputlist):
 				8: "Product/Project Manager",
 				9: "Business Analyst"}
 
+	ans1 = ans1[:3]
 	jobsResult = [job_dict.get(i) for i in ans1]
 	print(jobsResult)
 	return ans1, jobsResult
@@ -298,5 +299,5 @@ if __name__ == "__main__":
 		print(str(e))
 		print('No Model Loaded!')
 	else:
-		# app.run(port=8000, debug=True)
-		app.run(port=8000)
+		app.run(port=8000, debug=True)
+		#app.run(port=8000)
