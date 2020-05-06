@@ -1,19 +1,21 @@
 # Job Recommendation System (Data-X Project)
 
-(Brief Introduction)
+(Project brief)
 
-## Required Software and Packages
+This readme file mainly gives a brief introduction on how to make preparation and successfully run our job recommendation system.
+
+## Prerequisites
 
 ```
-Python (v3.7)
-numpy (v1.18.1)
-pandas (v1.0.1)
-matplotlib (v3.1.3)
-scikit-learn (v0.22.1)
-joblib (v0.14.1)
-flask (v1.1.1)
-requests (v2.22.0)
-beautifulsoup4 (v4.8.2)
+Python 3.7
+numpy 1.18.1
+pandas 1.0.1
+matplotlib 3.1.3
+scikit-learn 0.22.1
+joblib 0.14.1
+flask 1.1.1
+requests 2.22.0
+beautifulsoup4 4.8.2
 ```
 
 ## Installation
@@ -29,7 +31,7 @@ beautifulsoup4 (v4.8.2)
         pip install -r requirements.txt
         ```
 
-3. Start the Python program. 
+3. Start the Python program for web page.
    - Change the current working directory to the core [`app.py`](WebSites/Webpage_Final/app.py) file under `Webpage_Final` folder, and run this file through command line.
 
         ```bat
@@ -43,7 +45,13 @@ beautifulsoup4 (v4.8.2)
         http://127.0.0.1:8000/
         ```
 
-   - Enter your basic information, and generate your own recommended result! (See in demo video)
+   - Enter your basic information, and generate your own recommended result :laughing: ! (See in demo video)
+  
+   - Finally, use `Ctrl + C` to stop the program in commend line.
+
+> data cleaning part?
+
+> model selection?
 
 ## Reference
 
