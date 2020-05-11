@@ -1,6 +1,6 @@
 # A Job Recommendation System (Data-X Project)
 
-Contributor: Cheng-chun Chao, Sean Chuang, Xinyu Wang, Yijun Liang, Yuanyuan Xiao
+Contributors: Cheng-chun Chao, Sean Chuang, Xinyu Wang, Yijun Liang, Yuanyuan Xiao
 
 > Project description?
 
@@ -63,10 +63,6 @@ beautifulsoup4 4.8.2
   
    - Finally, use `Ctrl + C` to stop the program in commend line.
 
-> data cleaning part?
-
-> model selection?
-
 ## Reference
 
 This part includes all the external codes and materials we referred to.
@@ -77,5 +73,6 @@ This part includes all the external codes and materials we referred to.
 ## Project Links
 
 - Project Presentation Slide
-- Write-up report
+- [Write-up report](Deliverables/Final%20Report.pdf)
+- [INavigator](Deliverables/iNavigator.pdf)
 - Demo video
