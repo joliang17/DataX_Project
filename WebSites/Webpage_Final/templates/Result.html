@@ -65,7 +65,7 @@ Welcome ... <span id="result"></span> !
 	<!-- Display related books if user lack specific skills -->
 
 	<br>
-	<b> For the skills you hope to master, please refer to the following resources </b>
+	<b> For the skills you hope to master, please refer to the following resources (Books) </b>
 	<table class="Table_of_Books">
 		<thead>
 			<tr>
@@ -85,6 +85,26 @@ Welcome ... <span id="result"></span> !
 		</tbody>
 	</table>
 
+	<br>
+	<b> For the skills you hope to master, please refer to the following resources (Course) </b>
+	<table class="Table_of_Course">
+		<thead>
+			<tr>
+				<th> Skills </th>
+				<th> Course Title </th>
+				<th> Online Course Access</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for value in course_list %}
+			<tr>
+				<td>{{ value[0] }}</td>
+				<td>{{ value[1] }}</td>
+				<td><a href="http://{{ value[2] }}"> Link </a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
 	<h2> <b> Support links: </b> </h2>
 
