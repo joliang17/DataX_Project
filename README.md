@@ -22,18 +22,23 @@ beautifulsoup4 4.8.2
 
 ## Installation
 
-1. Download project code package from Github.
+1. Download project code package from Github, or `git clone` from GitHub.
+
+     ```
+     git clone https://github.com/joliang17/DataX_Project.git
+     ```
 
 2. Create a new virtual environment with Python 3.7, and activate it.
 
      ```bat
-     conda create -n test_env python=3.7 anaconda
-     activate test_env
+     conda create -n JobRecommendation python=3.7 anaconda
+     activate JobRecommendation
      ```
 
 3. Install necessary Python packages.
 
-    - Change the current working directory to this project folder, and install packages with the specific version in [`requirements.txt`](requirements.txt) through command line.
+    - Open a new terminal,and change the terminal's current working directory to this downloaded project folder.
+    - Install packages with the specific version in [`requirements.txt`](requirements.txt) through command line.
 
         ```bat
         cd DataX_Project
@@ -48,7 +53,7 @@ beautifulsoup4 4.8.2
         python app.py
         ```
 
-   - If successfully start the program, click (or type?) the url address in the web brower that shows in the command line.
+   - If successfully start the program, Open the following url address in the web brower that shows in the command line.
 
         ```
         http://127.0.0.1:8000/
