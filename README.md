@@ -2,6 +2,7 @@
 
 Contributor: Cheng-chun Chao, Sean Chuang, Xinyu Wang, Yijun Liang, Yuanyuan Xiao
 
+## Project Brief
 Job hunting can be quite frustrating, and it is not just about an eye-catching resume.  You need to know how your knowledge level locates you in the job experience level, what kind of extra skills you need to master, also you would like to know the appropriate salary range for the job you are looking for so you can negotiate with HR for a better offer. 
 In order to help out, the team built a corresponding recommendation engine, where users provide their basic information and the website will return suggested jobs and other related information such as salary, needed skills, and useful courses/books. 
 This application specifically targets people who lack job searching experience, for example, fresh graduates. Its recommendation engine can help them understand based on their current skills set, what kind of jobs fits users, and what’s the reasonable range of salary for them to ask during offer negotiating. Additionally, it can also help HR who would like to recruit talents and see what necessary skills they need to screen for the candidate’s resumes.
