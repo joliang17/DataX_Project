@@ -1,6 +1,8 @@
-# Job Recommendation System (Data-X Project)
+# A Job Recommendation System (Data-X Project)
 
-(Project brief)
+Contributor: Cheng-chun Chao, Sean Chuang, Xinyu Wang, Yijun Liang, Yuanyuan Xiao
+
+> Project description?
 
 This readme file mainly gives a brief introduction on how to make preparation and successfully run our job recommendation system.
 
@@ -70,5 +72,5 @@ This part includes all the external codes and materials we referred to.
 ## Project Links
 
 - Project Presentation Slide
-- Write-up
+- Write-up report
 - Demo video
