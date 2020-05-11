@@ -22,7 +22,14 @@ beautifulsoup4 4.8.2
 
 1. Download project code package from Github.
 
-2. Install necessary Python packages.
+2. Create a new virtual environment with Python 3.7, and activate it.
+
+     ```bat
+     conda create -n test_env python=3.7 anaconda
+     activate test_env
+     ```
+
+3. Install necessary Python packages.
 
     - Change the current working directory to this project folder, and install packages with the specific version in [`requirements.txt`](requirements.txt) through command line.
 
@@ -31,7 +38,7 @@ beautifulsoup4 4.8.2
         pip install -r requirements.txt
         ```
 
-3. Start the Python program for web page.
+4. Start the Python program for web page.
    - Change the current working directory to the core [`app.py`](WebSites/Webpage_Final/app.py) file under `Webpage_Final` folder, and run this file through command line.
 
         ```bat
