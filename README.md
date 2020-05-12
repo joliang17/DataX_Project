@@ -80,7 +80,8 @@ This part includes all the external codes and materials we referred to.
 
 ## Project Links
 
-- [Project Presentation Slide]()
+- [Project Presentation Slide](Deliverables/Job Hunting Strategy - Final Presentation.pptx)
 - [Write-up report](Deliverables/Final%20Report.pdf)
 - [INavigator](Deliverables/iNavigator.pdf)
-- [Demo video]()
+- [Demo video](Deliverables/Job Hunting Strategy - Final Presentation.pptx)
+     * Demo video shared link is attached in final presentation slides.
